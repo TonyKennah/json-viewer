@@ -1,0 +1,264 @@
+/* ==========================================
+   1. GLOBAL LAYOUT & CONTAINER
+   ========================================== */
+.app-container {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  color: #1f2937;
+  font-family: system-ui, -apple-system, sans-serif;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: visible;
+  /* Allows the entire webpage to scroll naturally */
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #2563eb;
+  margin-bottom: 8px;
+}
+
+.header p {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.main-content {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ==========================================
+   2. URL INPUT FORM
+   ========================================== */
+.url-form {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 640px) {
+  .url-form {
+    flex-direction: column;
+  }
+}
+
+.url-input {
+  flex: 1;
+  padding: 8px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background-color: #f9fafb;
+  color: #1f2937;
+  /* Overrides Vite's default forced white text */
+}
+
+.url-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.submit-btn {
+  padding: 8px 24px;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s;
+}
+
+.submit-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.submit-btn:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   3. STATUS MESSAGES & SPINNER
+   ========================================== */
+.error-banner {
+  padding: 16px;
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+  border-radius: 12px;
+  font-size: 0.875rem;
+}
+
+.placeholder-text,
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 0;
+  color: #9ca3af;
+  font-style: italic;
+  font-size: 0.875rem;
+}
+
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #2563eb;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================
+   4. JSON OUTPUT WINDOW
+   ========================================== */
+.viewer-window {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  /* Lets the container grow dynamically down the page */
+  min-height: auto;
+  /* Prevents calculation flashing on quick scrolls */
+}
+
+.viewer-header {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 12px 16px;
+  background-color: #f9fafb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.viewer-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.clear-btn {
+  background: none;
+  border: none;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+.clear-btn:hover {
+  color: #4b5563;
+}
+
+.viewer-body {
+  padding: 16px;
+  text-align: left;
+  /* Overrides Vite's global centered text alignment */
+  overflow: visible;
+  /* Prevents double scrollbar hitches */
+}
+
+/* ==========================================
+   5. TREE-VIEW INTERACTION & COLORS
+   ========================================== */
+.json-node {
+  margin-left: 16px;
+  font-family: monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: left;
+  /* Ensures keys and child values line up cleanly */
+}
+
+.node-row {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-arrow {
+  color: #9ca3af;
+  margin-right: 4px;
+  width: 16px;
+  display: inline-block;
+  text-align: center;
+}
+
+.node-key {
+  color: #7c3aed;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.node-bracket {
+  color: #4b5563;
+}
+
+.node-count {
+  font-size: 0.75rem;
+  background-color: #f3f4f6;
+  padding: 0 4px;
+  border-radius: 4px;
+  margin: 0 4px;
+}
+
+.node-children {
+  border-left: 1px solid #e5e7eb;
+  margin-left: 8px;
+  padding-left: 8px;
+}
+
+/* Value Syntax Coloring */
+.val-string {
+  color: #16a34a;
+}
+
+.val-number {
+  color: #2563eb;
+}
+
+.val-boolean {
+  color: #9333ea;
+}
+
+.val-null {
+  color: #6b7280;
+}
